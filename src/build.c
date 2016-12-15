@@ -1,14 +1,14 @@
+/*
+** Routines to construction the finite state machine for the LEMON
+** parser generator.
+*/
+
 #include "struct.h"
 #include "set.h"
 #include "config.h"
 #include "table.h"
 #include "configlist.h"
-
-/********************** From the file "build.c" *****************************/
-/*
-** Routines to construction the finite state machine for the LEMON
-** parser generator.
-*/
+#include "action.h"
 
 /* Find a precedence symbol of every rule in the grammar.
 ** 

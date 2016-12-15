@@ -1,4 +1,3 @@
-/******************** From the file "msort.c" *******************************/
 /*
 ** A generic merge-sort program.
 **

@@ -19,6 +19,7 @@ struct acttab {
   int nLookaheadAlloc;         /* Slots allocated in aLookahead[] */
 };
 
+struct action *Action_sort(struct action *);
 
 /* Return the number of entries in the yy_action table */
 #define acttab_size(X) ((X)->nAction)
@@ -28,5 +29,7 @@ struct acttab {
 
 /* The value for the N-th entry in yy_lookahead */
 #define acttab_yylookahead(X,N)  ((X)->aAction[N].lookahead)
+
+acttab *acttab_alloc(void);
 
 #endif // _ACTION_H_

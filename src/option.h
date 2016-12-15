@@ -2,7 +2,7 @@
 #define _OPTION_H_
 
 #include <stdio.h>
-/****** From the file "option.h" ******************************************/
+
 enum option_type { OPT_FLAG=1,  OPT_INT,  OPT_DBL,  OPT_STR,
          OPT_FFLAG, OPT_FINT, OPT_FDBL, OPT_FSTR};
 struct s_options {

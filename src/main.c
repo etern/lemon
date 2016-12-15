@@ -1,7 +1,6 @@
 #include "config.h"
 
 int showPrecedenceConflict = 0;
-char *msort(char*,char**,int(*)(const char*,const char*));
 
 /*
 ** Compilers are starting to complain about the use of sprintf() and strcpy(),
@@ -108,9 +107,6 @@ void lemon_strcat(char *dest, const char *src){
 struct rule;
 struct lemon;
 struct action;
-
-struct action *Action_new(void);
-struct action *Action_sort(struct action *);
 
 #include "build.h"
 #include "configlist.h"

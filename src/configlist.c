@@ -1,11 +1,13 @@
-#include "config.h"
-#include "struct.h"
-#include "table.h"
-/********************* From the file "configlist.c" *************************/
 /*
 ** Routines to processing a configuration list and building a state
 ** in the LEMON parser generator.
 */
+
+#include "config.h"
+#include "struct.h"
+#include "table.h"
+#include "set.h"
+#include "msort.h"
 
 static struct config *freelist = 0;      /* List of free configurations */
 static struct config *current = 0;       /* Top of list of configurations */

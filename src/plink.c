@@ -1,11 +1,12 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include "struct.h"
-/*************************** From the file "plink.c" *********************/
 /*
 ** Routines processing configuration follow-set propagation links
 ** in the LEMON parser generator.
 */
+
+#include <stdlib.h>
+#include <stdio.h>
+#include "struct.h"
+
 static struct plink *plink_freelist = 0;
 
 /* Allocate a new plink */

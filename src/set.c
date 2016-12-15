@@ -1,9 +1,9 @@
-#include <assert.h>
-#include <stdlib.h>
-/***************** From the file "set.c" ************************************/
 /*
 ** Set manipulation routines for the LEMON parser generator.
 */
+
+#include <assert.h>
+#include <stdlib.h>
 
 static int size = 0;
 

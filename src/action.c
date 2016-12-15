@@ -1,13 +1,14 @@
-#include "action.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <assert.h>
-#include "struct.h"
-
-/****************** From the file "action.c" *******************************/
 /*
 ** Routines processing parser actions in the LEMON parser generator.
 */
+
+#include "action.h"
+#include <assert.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include "struct.h"
+#include "msort.h"
 
 /* Allocate a new parser action */
 struct action *Action_new(void){

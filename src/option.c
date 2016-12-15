@@ -3,7 +3,7 @@
 #include <string.h>
 #include <assert.h>
 #include "config.h"
-/************************ From the file "option.c" **************************/
+
 static char **argv;
 static struct s_options *op;
 static FILE *errstream;

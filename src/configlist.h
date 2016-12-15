@@ -1,5 +1,6 @@
+#ifndef _CONFIGLIST_H_
+#define _CONFIGLIST_H_
 
-/********* From the file "configlist.h" *********************************/
 void Configlist_init(void);
 struct config *Configlist_add(struct rule *, int);
 struct config *Configlist_addbasis(struct rule *, int);
@@ -10,3 +11,5 @@ struct config *Configlist_return(void);
 struct config *Configlist_basis(void);
 void Configlist_eat(struct config *);
 void Configlist_reset(void);
+
+#endif // _CONFIGLIST_H_

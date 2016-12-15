@@ -1,7 +1,3 @@
-#include "config.h"
-#include "table.h"
-#include "struct.h"
-/********************** From the file "table.c" ****************************/
 /*
 ** All code in this file has been automatically generated
 ** from a specification in the file
@@ -13,6 +9,10 @@
 /*
 ** Code for processing tables in the LEMON parser generator.
 */
+
+#include "config.h"
+#include "table.h"
+#include "struct.h"
 
 PRIVATE unsigned strhash(const char *x)
 {

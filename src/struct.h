@@ -1,9 +1,9 @@
-#ifndef _STRUCT_H_
-#define _STRUCT_H_
-/********** From the file "struct.h" *************************************/
 /*
 ** Principal data structures for the LEMON parser generator.
 */
+
+#ifndef _STRUCT_H_
+#define _STRUCT_H_
 
 typedef enum {LEMON_FALSE=0, LEMON_TRUE} Boolean;
 

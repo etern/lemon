@@ -1,9 +1,9 @@
-#include <stdio.h>
-#include <stdarg.h>
-/***************** From the file "error.c" *********************************/
 /*
 ** Code for printing error message.
 */
+
+#include <stdio.h>
+#include <stdarg.h>
 
 void ErrorMsg(const char *filename, int lineno, const char *format, ...){
   va_list ap;

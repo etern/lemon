@@ -1,13 +1,12 @@
+/*
+** Procedures for generating reports and tables in the LEMON parser generator.
+*/
+
 #include "config.h"
 #include "struct.h"
 #include "table.h"
 #include "set.h"
 #include "action.h"
-
-/*********************** From the file "report.c" **************************/
-/*
-** Procedures for generating reports and tables in the LEMON parser generator.
-*/
 
 /* Generate a filename with the given suffix.  Space to hold the
 ** name comes from malloc() and must be freed by the calling

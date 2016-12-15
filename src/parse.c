@@ -1,10 +1,10 @@
-#include "config.h"
-#include "struct.h"
-#include "table.h"
-/*********************** From the file "parse.c" ****************************/
 /*
 ** Input file parser for the LEMON parser generator.
 */
+
+#include "config.h"
+#include "struct.h"
+#include "table.h"
 
 /* The state of the parser */
 enum e_state {

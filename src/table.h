@@ -1,8 +1,3 @@
-#ifndef _TABLE_H_
-#define _TABLE_H_
-
-#include "struct.h"
-/**************** From the file "table.h" *********************************/
 /*
 ** All code in this file has been automatically generated
 ** from a specification in the file
@@ -14,6 +9,11 @@
 /*
 ** Code for processing tables in the LEMON parser generator.
 */
+
+#ifndef _TABLE_H_
+#define _TABLE_H_
+
+#include "struct.h"
 /* Routines for handling a strings */
 
 const char *Strsafe(const char *);
