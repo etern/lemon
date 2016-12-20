@@ -625,7 +625,7 @@ PRIVATE int translate_code(struct lemon *lemp, struct rule *rp){
     lhsdirect = 1;
   }else if( rp->rhsalias[0]==0 ){
     /* The left-most RHS symbol has no value.  LHS direct is ok.  But
-    ** we have to call the distructor on the RHS symbol first. */
+    ** we have to call the destructor on the RHS symbol first. */
     lhsdirect = 1;
     if( has_destructor(rp->rhs[0],lemp) ){
       append_str(0,0,0,0);
@@ -1415,8 +1415,9 @@ void ReportTable(
   }
   for(i=0; i<lemp->nsymbol; i++){
     struct symbol *sp = lemp->symbols[i];
-    if( sp==0 || sp->type==TERMINAL || sp->destructor==0 ) continue;
+    if( sp==0 || sp->type==TERMINAL || sp->destructor==0 || sp->destructor_emitted) continue;
     fprintf(out,"    case %d: /* %s */\n", sp->index, sp->name); lineno++;
+    sp->destructor_emitted = 1;
 
     /* Combine duplicate destructors into a single case */
     for(j=i+1; j<lemp->nsymbol; j++){
@@ -1426,7 +1427,8 @@ void ReportTable(
           && strcmp(sp->destructor,sp2->destructor)==0 ){
          fprintf(out,"    case %d: /* %s */\n",
                  sp2->index, sp2->name); lineno++;
-         sp2->destructor = 0;
+         //sp2->destructor = 0; // bugfix: laterly used by translate_code
+         sp2->destructor_emitted = 1;
       }
     }
 

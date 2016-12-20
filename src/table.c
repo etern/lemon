@@ -175,6 +175,7 @@ struct symbol *Symbol_new(const char *x)
     sp->firstset = 0;
     sp->lambda = LEMON_FALSE;
     sp->destructor = 0;
+    sp->destructor_emitted = 0;
     sp->destLineno = 0;
     sp->datatype = 0;
     sp->useCnt = 0;
