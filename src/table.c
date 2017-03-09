@@ -186,7 +186,7 @@ struct symbol *Symbol_new(const char *x)
 }
 
 /* Compare two symbols for sorting purposes.  Return negative,
-** zero, or positive if a is less then, equal to, or greater
+** zero, or positive if a is less than, equal to, or greater
 ** than b.
 **
 ** Symbols that begin with upper case letters (terminals or tokens)

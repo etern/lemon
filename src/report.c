@@ -592,7 +592,7 @@ PRIVATE char *append_str(const char *zText, int n, int p1, int p2){
 
 /*
 ** zCode is a string that is the action associated with a rule.  Expand
-** the symbols in this string so that the refer to elements of the parser
+** the symbols in this string so that they refer to elements of the parser
 ** stack.
 **
 ** Return 1 if the expanded code requires that "yylhsminor" local variable

@@ -243,6 +243,11 @@ to follow the previous rule.");
         msp->subsym = (struct symbol **) realloc(msp->subsym,
           sizeof(struct symbol*)*msp->nsubsym);
         msp->subsym[msp->nsubsym-1] = Symbol_new(&x[1]);
+        if (!ISUPPER(x[1])) {
+          ErrorMsg(psp->filename,psp->tokenlineno,
+            "Compound should be TERM|TERM without spaces");
+          psp->errorcnt++;
+        }
         if( ISLOWER(x[1]) || ISLOWER(msp->subsym[0]->name[0]) ){
           ErrorMsg(psp->filename,psp->tokenlineno,
             "Cannot form a compound containing a non-terminal");
