@@ -1031,6 +1031,23 @@ static void writeRuleText(FILE *out, struct rule *rp){
   }
 }
 
+extern char *user_output_file;
+static FILE *source_open(struct lemon *lemp)
+{
+  if (user_output_file) {
+    if( lemp->outname ) free(lemp->outname);
+    lemp->outname = strdup(user_output_file);
+    FILE *fp = fopen(lemp->outname, "wb");
+    if( fp==0 ){
+      fprintf(stderr,"Can't open file \"%s\".\n",lemp->outname);
+      lemp->errorcnt++;
+      return 0;
+    }
+    return fp;
+  } else {
+    return file_open(lemp,".c","wb");
+  }
+}
 
 /* Generate C source code for the parser */
 void ReportTable(
@@ -1054,7 +1071,7 @@ void ReportTable(
 
   in = tplt_open(lemp);
   if( in==0 ) return;
-  out = file_open(lemp,".c","wb");
+  out = source_open(lemp);
   if( out==0 ){
     fclose(in);
     return;
@@ -1522,6 +1539,24 @@ void ReportTable(
   return;
 }
 
+extern char *user_output_header;
+static FILE *header_open(struct lemon *lemp, const char *mode)
+{
+  if (user_output_header) {
+    if( lemp->outname ) free(lemp->outname);
+    lemp->outname = strdup(user_output_header);
+    FILE *fp = fopen(lemp->outname, mode);
+    if( fp==0 && *mode=='w' ){
+      fprintf(stderr,"Can't open file \"%s\".\n",lemp->outname);
+      lemp->errorcnt++;
+      return 0;
+    }
+    return fp;
+  } else {
+    return file_open(lemp,".h",mode);
+  }
+}
+
 /* Generate a header file for the parser */
 void ReportHeader(struct lemon *lemp)
 {
@@ -1533,7 +1568,7 @@ void ReportHeader(struct lemon *lemp)
 
   if( lemp->tokenprefix ) prefix = lemp->tokenprefix;
   else                    prefix = "";
-  in = file_open(lemp,".h","rb");
+  in = header_open(lemp,"rb");
   if( in ){
     int nextChar;
     for(i=1; i<lemp->nterminal && fgets(line,LINESIZE,in); i++){
@@ -1548,7 +1583,7 @@ void ReportHeader(struct lemon *lemp)
       return;
     }
   }
-  out = file_open(lemp,".h","wb");
+  out = header_open(lemp,"wb");
   if( out ){
     for(i=1; i<lemp->nterminal; i++){
       fprintf(out,"#define %s%-30s %3d\n",prefix,lemp->symbols[i]->name,i);

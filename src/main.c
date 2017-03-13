@@ -165,6 +165,22 @@ static void handle_T_option(char *z){
   }
   lemon_strcpy(user_templatename, z);
 }
+char *user_output_file = NULL;
+static void handle_o_option(char *z){
+  user_output_file = (char *) malloc( lemonStrlen(z)+1 );
+  if( user_output_file==0 ){
+    memory_error();
+  }
+  lemon_strcpy(user_output_file, z);
+}
+char *user_output_header = NULL;
+static void handle_h_option(char *z){
+  user_output_header = (char *) malloc( lemonStrlen(z)+1 );
+  if( user_output_header==0 ){
+    memory_error();
+  }
+  lemon_strcpy(user_output_header, z);
+}
 
 /* Merge together to lists of rules order by rule.iRule */
 static struct rule *Rule_merge(struct rule *pA, struct rule *pB){
@@ -257,6 +273,8 @@ int main(int argc, char **argv)
     {OPT_FLAG, "x", (char*)&version, "Print the version number."},
     {OPT_FSTR, "T", (char*)handle_T_option, "Specify a template file."},
     {OPT_FSTR, "W", 0, "Ignored.  (Placeholder for '-W' compiler options.)"},
+    {OPT_FSTR, "o", (char*)handle_o_option, "Specify output c file."},
+    {OPT_FSTR, "h", (char*)handle_h_option, "Specify output header file."},
     {OPT_FLAG,0,0,0}
   };
   int i;
